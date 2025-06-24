@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Neucha&family=Press+Start+2P&display=swap");
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: "DM Sans", serif;
+    font-optical-sizing: auto;
+  }
+}
+@layer components {
+  .logo-container{
+    @apply justify-start flex items-center
+  }
+  .logo {
+    @apply w-auto h-20 justify-start;
+  }
+  .nav {
+    @apply w-full h-20 bg-blue-200 flex justify-between items-center ;
+  }
+  .search {
+    @apply bg-blue-500  flex rounded-full h-12 w-[520px] justify-between items-center  ;
+  }
+  .search-icon {
+    @apply w-5 h-5 mr-2;
+  }
+  .menu-icon {
+    @apply w-auto h-10
+  }
+}
+@layer utilities {
+}
