@@ -1,31 +1,121 @@
 @import url("https://fonts.googleapis.com/css2?family=Neucha&family=Press+Start+2P&display=swap");
 @import "tailwindcss";
 
+@theme {
+  --teto-pink: #f9c1d9; /* very soft pink */
+  --teto-crimson: #eaa0b7; /* muted rosy pink */
+  --teto-navy: #a3aedf; /* soft periwinkle blue */
+  --teto-charcoal: #d1d4e0; /* light gray-blue */
+  --teto-blush: #fff8fb; /* ultra pale pink */
+  --teto-lilac: #d7c3ee; /* pastel lilac */
+  --teto-text-dark: #5a5a5a; /* medium gray text */
+  --teto-text-light: #ffffff; /* pure white text */
+}
+
 @layer base {
   body {
     font-family: "DM Sans", serif;
     font-optical-sizing: auto;
+    @apply bg-teto-pink;
   }
 }
+
 @layer components {
-  .logo-container{
-    @apply justify-start flex items-center
+  .nav {
+    @apply w-[80%] bg-teto-navy h-20 flex justify-between items-center mx-auto;
+  }
+  .logoContainer {
+    @apply justify-start flex items-center;
   }
   .logo {
-    @apply w-auto h-20 justify-start;
-  }
-  .nav {
-    @apply w-full h-20 bg-blue-200 flex justify-between items-center ;
+    @apply w-auto h-20 justify-start ml-3;
   }
   .search {
-    @apply bg-blue-500  flex rounded-full h-12 w-[520px] justify-between items-center  ;
+    @apply flex rounded-full bg-teto-blush h-12 w-[520px] justify-between items-center pr-[1px];
   }
-  .search-icon {
-    @apply w-5 h-5 mr-2;
+  .searchIcon {
+    @apply w-5 h-5 mr-1;
   }
-  .menu-icon {
-    @apply w-auto h-10
+  .searchInput {
+    @apply w-full ml-[5px] outline-none ring-0 focus:ring-0 focus:outline-none;
   }
 }
-@layer utilities {
+
+@utility bg-teto-pink {
+  background-color: var(
+    --teto-pink
+  ); /* Use for main buttons, highlights, accents */
+}
+@utility bg-teto-crimson {
+  background-color: var(
+    --teto-crimson
+  ); /* Use for hover states, alerts, intense accents */
+}
+@utility bg-teto-navy {
+  background-color: var(
+    --teto-navy
+  ); /* Use for navbars, footers, dark sections */
+}
+@utility bg-teto-charcoal {
+  background-color: var(
+    --teto-charcoal
+  ); /* Use for cards, sidebars, dark containers */
+}
+@utility bg-teto-blush {
+  background-color: var(
+    --teto-blush
+  ); /* Use for soft section backgrounds, dividers */
+}
+@utility bg-teto-lilac {
+  background-color: var(
+    --teto-lilac
+  ); /* Use for labels, tags, secondary buttons */
+}
+
+@utility text-teto-pink {
+  color: var(--teto-pink); /* Use for emphasis text, links, accents */
+}
+@utility text-teto-crimson {
+  color: var(--teto-crimson); /* Use for alert text or important callouts */
+}
+@utility text-teto-navy {
+  color: var(--teto-navy); /* Use for headers, titles on light backgrounds */
+}
+@utility text-teto-charcoal {
+  color: var(--teto-charcoal); /* Use for subdued text or dark accents */
+}
+@utility text-teto-blush {
+  color: var(--teto-blush); /* Use for soft accent text */
+}
+@utility text-teto-lilac {
+  color: var(--teto-lilac); /* Use for decorative text or tags */
+}
+@utility text-teto-dark {
+  color: var(--teto-text-dark); /* Use for body text on light backgrounds */
+}
+@utility text-teto-light {
+  color: var(--teto-text-light); /* Use for text on dark backgrounds */
+}
+
+@utility border-teto-pink {
+  border-color: var(
+    --teto-pink
+  ); /* Use for primary button borders or accents */
+}
+@utility border-teto-crimson {
+  border-color: var(
+    --teto-crimson
+  ); /* Use for alert boxes or hovered outlines */
+}
+@utility border-teto-navy {
+  border-color: var(--teto-navy); /* Use for nav elements or dark boxes */
+}
+@utility border-teto-charcoal {
+  border-color: var(--teto-charcoal); /* Use for dark card borders or panels */
+}
+@utility border-teto-blush {
+  border-color: var(--teto-blush); /* Use for light themes or soft sections */
+}
+@utility border-teto-lilac {
+  border-color: var(--teto-lilac); /* Use for secondary elements or tags */
 }

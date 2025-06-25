@@ -1,11 +1,12 @@
-import React from "react";
+
+import Body from "./components/Body";
 import Nav from "./components/Nav";
-import { Cheerio } from "cheerio";
 import axios from "axios";
 function App() {
   return (
     <>
       <Nav />
+      <Body/>
     </>
   );
 }

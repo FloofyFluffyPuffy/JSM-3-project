@@ -1,13 +1,13 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
-interface anime {
+export interface Anime {
   title: string;
   newEp: string;
   SD: string;
   image: string;
 }
-export const nineAnime = async (): Promise<anime[]> => {
-    const data : anime[] = []
+export const nineAnime = async (): Promise<Anime[]> => {
+    const data : Anime[] = []
   try {
     const request = await axios.get("https://9anime.com.ro/");
     // console.log(request.data)
