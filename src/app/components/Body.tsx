@@ -1,8 +1,11 @@
 import React from 'react'
-
+import AnimeCard from './AnimeCard'
+import AnimeList from './AnimeList'
 const Body = () => {
   return (
-    <div>Body</div>
+    <div>
+        <AnimeList/>
+    </div>
   )
 }
 

@@ -22,7 +22,10 @@
 
 @layer components {
   .nav {
-    @apply w-[80%] bg-teto-navy h-20 flex justify-between items-center mx-auto;
+    @apply w-[80%] bg-teto-navy h-20 flex justify-between items-center mx-auto rounded-xl
+  }
+  .animeList{
+    @apply w-[80%] mx-auto
   }
   .logoContainer {
     @apply justify-start flex items-center;
@@ -31,13 +34,37 @@
     @apply w-auto h-20 justify-start ml-3;
   }
   .search {
-    @apply flex rounded-full bg-teto-blush h-12 w-[520px] justify-between items-center pr-[1px];
+    @apply flex rounded-full bg-teto-blush h-12 w-[520px] justify-between items-center pr-[1px]
   }
   .searchIcon {
     @apply w-5 h-5 mr-1;
   }
   .searchInput {
     @apply w-full ml-[5px] outline-none ring-0 focus:ring-0 focus:outline-none;
+  }
+  .tetoLoad {
+    @apply mx-auto mt-52
+  }
+  .subHeader{
+     @apply text-center text-2xl font-semibold text-teto-light tracking-wide mb-4;
+  }
+  .cardContainer{
+    @apply grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4
+  }
+  .animeCards {
+    @apply bg-teto-navy text-center rounded-2xl
+  }
+  .animeTitle{
+    @apply font-bold text-[18px] text-black
+  }
+  .cardCover {
+   @apply w-full h-full object-cover rounded-2xl hover:scale-110 transition-transform duration-300 ease-in-out;
+  }
+  .imgContainer{
+    @apply relative overflow-hidden rounded-2xl
+  }
+  .peartoPlay{
+    @apply absolute inset-0 opacity-0 w-auto h-auto mx-auto my-auto peer-hover:opacity-100 transition-opacity duration-900 pointer-events-none scale-80 hover:scale-100 
   }
 }
 
