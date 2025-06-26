@@ -1,7 +1,7 @@
 import { useState } from "react";
-
+import { useAnime } from "./AnimeProvider";
 const Nav = () => {
-  const [search, setSearch] = useState<string>();
+  const {searchTerm, setSearchTerm} = useAnime();
   return (
     <div className="nav">
       <div className="logoContainer">
@@ -13,9 +13,10 @@ const Nav = () => {
           className="searchInput"
           type="text"
           placeholder="Search..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
+        
         <img className="searchIcon" src="/search.png" alt="" />
       </div>
       <div className="logoContainer">

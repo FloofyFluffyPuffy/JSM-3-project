@@ -1,12 +1,11 @@
-import React from 'react'
-import AnimeCard from './AnimeCard'
-import AnimeList from './AnimeList'
+import GetAnime from './GetAnime';
+import AnimeList from './AnimeList';
 const Body = () => {
   return (
     <div>
-        <AnimeList/>
+      <GetAnime />
+      <AnimeList />
     </div>
-  )
-}
-
-export default Body
+  );
+};
+ export default Body

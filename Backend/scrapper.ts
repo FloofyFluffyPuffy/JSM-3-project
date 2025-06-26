@@ -8,13 +8,17 @@ app.use(cors({
   origin: "http://localhost:5173", // your frontend URL
 }));
 app.get("/", async (req: Request, res: Response): Promise<void> => {
+  const searchTerm = req.query.searchTerm as string
+  // req.query is an object containing all the query parameters from the URL.
+  // So if the URL is ...?searchTerm=one+piece, 
+  // then: req.query = { searchTerm: "one piece" }
   //async = web wait for data, or script run without data and explode
   // is root url localhost.....
   // !  res.status().json() sends the response and returns a Response object (from Express).
   // ! But if your route handler is async, it returns a Promise<Response>, which doesn't match what Express expects (which is just Promise<void> or void).
   // ! So don't return it — just call it.
   try {
-    const animeData = await nineAnime();
+    const animeData = await nineAnime(searchTerm); // pass searchTerm to anime.ts
     res.status(200).json({ animeData });
   } catch (error) {
     // 200 successful

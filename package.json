@@ -16,7 +16,10 @@
     "express": "^5.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "tailwindcss": "^4.1.10"
+    "react-router-dom": "^7.6.2",
+    "react-use": "^17.6.0",
+    "tailwindcss": "^4.1.10",
+    "use": "^3.1.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
@@ -46,6 +49,4 @@
     "url": "https://github.com/FloofyFluffyPuffy/JSM-3-project/issues"
   },
   "homepage": "https://github.com/FloofyFluffyPuffy/JSM-3-project#readme"
-  
 }
-
