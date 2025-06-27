@@ -1,4 +1,4 @@
-import GetAnime from './GetAnime';
+import GetAnime from './GetAnimeData';
 import AnimeList from './AnimeList';
 const Body = () => {
   return (

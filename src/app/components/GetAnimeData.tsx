@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useAnime } from "./AnimeProvider";
 import axios from "axios";
-export const getAnime = () => {
+export const GetAnime = () => {
   const {
     animeList,
     setAnimeList,
@@ -29,13 +29,13 @@ export const getAnime = () => {
             });
         }, [debouncedSearchTerm]);
   useEffect(() => {
-    console.log("animeList updated:", animeList);
+    console.log("animeList updated:", animeList)
   }, [animeList]);
   // ! really annoying, need to run both backend and front
   // !  also need .env.local to be same place as package.json and vite.config
   //? why loading, it wont matter cuz when it get to this it the useffect will be complete?
   // bcuz this isnt async/await, then only stop code in the block and still run the rest A B(then here) C => A C B
-  return null
+   return null
 };
 
 export default GetAnime;

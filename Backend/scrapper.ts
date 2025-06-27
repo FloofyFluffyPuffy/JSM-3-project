@@ -5,7 +5,7 @@ const app = express();
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 5174;
 // Allow requests from your frontend origin (use '*' to allow all for dev)
 app.use(cors({
-  origin: "http://localhost:5173", // your frontend URL
+  origin: "http://localhost:5173", // frontend URL
 }));
 app.get("/", async (req: Request, res: Response): Promise<void> => {
   const searchTerm = req.query.searchTerm as string

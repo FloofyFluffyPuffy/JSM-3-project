@@ -1,11 +1,13 @@
 import { useContext } from "react"
 import type { Anime } from "../../../Backend/anime"
+import { useNavigate } from "react-router-dom"
 interface CardData {
     anime: Anime
 }
 const AnimeCard = ({anime}: CardData) => {
+  const navigate = useNavigate()
   return (
-    <div className="animeCards">
+    <div className="animeCards" onClick={() => {navigate(`/watch/${encodeURIComponent(anime.href)}`)}}>
         <div className="imgContainer">
             <img className="cardCover peer" src={anime.image} alt={anime.title}/>
         

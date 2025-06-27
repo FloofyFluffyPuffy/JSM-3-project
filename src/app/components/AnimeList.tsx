@@ -8,6 +8,14 @@ const AnimeList = () => {
   if (loading)
     return <img className="tetoLoad" src="/tetoLogo.gif" alt="Loading..." />;
 
+    if (animeList.length === 0)
+    return (
+      <div className="flex flex-col items-center justify-center mt-10">
+        <h2 className='subHeader'>No Anime Found</h2>
+        <img src="/tetoCry.png" alt="No results"/>
+      </div>
+    );
+
   return (
     <div className='animeList'>
       <section>

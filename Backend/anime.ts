@@ -5,6 +5,7 @@ export interface Anime {
   image: string;
   newEp: string;
   SD: string;
+  href: string
 }
 export const nineAnime = async (searchTerm: string): Promise<Anime[]> => { //accept searchTerm from scrapper
   const data: Anime[] = [];
@@ -27,12 +28,13 @@ console.log("Endpoint:", endPoint);
       const image = $(e).find("img").attr("data-src") || "No Image Found";
       const newEp = $(e).find(".tick-eps").text().trim() || "Ep ?";
       const SD = $(e).find(".tick-sub").text().trim() || "Unknown";
-
+      const href = $(e).find(".film-name > a").attr("href") || "Unknown"
       data.push({
         title,
         image,
         newEp,
         SD,
+        href
       });
     });
   } catch (error) {

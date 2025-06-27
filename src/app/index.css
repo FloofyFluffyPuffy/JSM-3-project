@@ -22,7 +22,7 @@
 
 @layer components {
   .nav {
-    @apply w-[80%] bg-teto-navy h-20 flex justify-between items-center mx-auto rounded-xl
+    @apply w-[80%] bg-teto-navy h-20 flex justify-between items-center mx-auto rounded-xl mb-4
   }
   .animeList{
     @apply w-[80%] mx-auto
@@ -34,16 +34,19 @@
     @apply w-auto h-20 justify-start ml-3;
   }
   .search {
-    @apply flex rounded-full bg-teto-blush h-12 w-[520px] justify-between items-center pr-[1px]
+    @apply flex rounded-full bg-teto-blush h-12 w-[520px] justify-between items-center pr-[1px] 
   }
   .searchIcon {
-    @apply w-5 h-5 mr-1;
-  }
+  @apply  h-8 w-8 mr-2 rounded-xl transition-all duration-300 ease-in-out p-1 group-focus-within:bg-teto-crimson
+}
+.searchIcon:hover {
+  @apply scale-125 bg-teto-crimson shadow-md ;
+}
   .searchInput {
     @apply w-full ml-[5px] outline-none ring-0 focus:ring-0 focus:outline-none;
   }
   .tetoLoad {
-    @apply mx-auto mt-52
+    @apply mx-auto mt-52 
   }
   .subHeader{
      @apply text-center text-2xl font-semibold text-teto-light tracking-wide mb-4;
@@ -52,13 +55,13 @@
     @apply grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4
   }
   .animeCards {
-    @apply bg-teto-navy text-center rounded-2xl
+    @apply bg-teto-navy text-center rounded-2xl 
   }
   .animeTitle{
     @apply font-bold text-[18px] text-black
   }
   .cardCover {
-   @apply w-full h-full object-cover rounded-2xl hover:scale-110 transition-transform duration-300 ease-in-out;
+   @apply w-full h-62 rounded-2xl hover:scale-110 transition-transform duration-300 ease-in-out;
   }
   .imgContainer{
     @apply relative overflow-hidden rounded-2xl
@@ -145,4 +148,37 @@
 }
 @utility border-teto-lilac {
   border-color: var(--teto-lilac); /* Use for secondary elements or tags */
+}
+@layer utilities {
+  .ring-teto-pink {
+    @apply ring-2 ring-offset-2 ring-[color:var(--teto-pink)];
+  }
+
+  .ring-teto-crimson {
+    @apply ring-2 ring-offset-2 ring-[color:var(--teto-crimson)];
+  }
+
+  .ring-teto-navy {
+    @apply ring-2 ring-offset-2 ring-[color:var(--teto-navy)];
+  }
+
+  .ring-teto-charcoal {
+    @apply ring-2 ring-offset-2 ring-[color:var(--teto-charcoal)];
+  }
+
+  .ring-teto-blush {
+    @apply ring-2 ring-offset-2 ring-[color:var(--teto-blush)];
+  }
+
+  .ring-teto-lilac {
+    @apply ring-2 ring-offset-2 ring-[color:var(--teto-lilac)];
+  }
+
+  .ring-teto-dark {
+    @apply ring-2 ring-offset-2 ring-[color:var(--teto-text-dark)];
+  }
+
+  .ring-teto-light {
+    @apply ring-2 ring-offset-2 ring-[color:var(--teto-text-light)];
+  }
 }
