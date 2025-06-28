@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import type { Anime } from "../../../Backend/anime"
+import type { Anime } from "../../../Backend/type"
 import { useNavigate } from "react-router-dom"
 interface CardData {
     anime: Anime

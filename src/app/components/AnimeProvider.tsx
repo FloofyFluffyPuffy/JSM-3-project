@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import type { Anime } from "../../../Backend/anime";
+import type { Anime, StreamData } from "../../../Backend/type";
 import axios from "axios";
 import { useDebounce } from "react-use";
 interface AnimeContextType {
@@ -10,6 +10,8 @@ interface AnimeContextType {
   searchTerm: string
   setSearchTerm:React.Dispatch<React.SetStateAction<string>>
     debouncedSearchTerm: string;
+        scrapedStreamData: StreamData
+    setScrapedStreamData:React.Dispatch<React.SetStateAction<StreamData>>
 }
 const AnimeContext = createContext<AnimeContextType | null>(null); // make new context
 // | is either || is or
@@ -27,6 +29,17 @@ export const AnimeProvider = ({ children }: { children: React.ReactNode }) => {
 }, 300, [searchTerm]);
   const [animeList, setAnimeList] = useState<Anime[]>([]);
   const [loading, setLoading] = useState<boolean>(true)
+  const [scrapedStreamData, setScrapedStreamData] = useState<StreamData>
+  ({
+      title: "",
+  image: "",
+  status: "",
+  type: "",
+  genres: [],
+  aired: "",
+  episodes: [],
+  iframeSrc: "",
+  })
   return (
       <AnimeContext.Provider  value={{
     animeList,
@@ -35,7 +48,9 @@ export const AnimeProvider = ({ children }: { children: React.ReactNode }) => {
     setAnimeList,
     searchTerm,
     setSearchTerm,
-    debouncedSearchTerm
+    debouncedSearchTerm,
+    scrapedStreamData,
+    setScrapedStreamData
   }}>
         {children}
       </AnimeContext.Provider>

@@ -1,12 +1,6 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
-export interface Anime {
-  title: string;
-  image: string;
-  newEp: string;
-  SD: string;
-  href: string
-}
+import type { Anime } from "./type";
 export const nineAnime = async (searchTerm: string): Promise<Anime[]> => { //accept searchTerm from scrapper
   const data: Anime[] = [];
   try {

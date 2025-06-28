@@ -2,7 +2,9 @@ import React from 'react'
 
 const StreamContent = () => {
   return (
-    <div>StreamContent</div>
+    <div>
+      
+    </div>
   )
 }
 

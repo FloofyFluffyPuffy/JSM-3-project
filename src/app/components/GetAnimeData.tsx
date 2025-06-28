@@ -11,7 +11,7 @@ export const GetAnime = () => {
     setSearchTerm,
     debouncedSearchTerm
   } = useAnime();
-  const API_URL = import.meta.env.VITE_API_URL; // remember to put this wher package.json,vite.ts is
+  const API_URL = import.meta.env.VITE_BACKEND_API_URL; // remember to put this wher package.json,vite.ts is
        useEffect(() => {
         setLoading(true);
           //   console.log("Calling API URL:", API_URL); //checking API
