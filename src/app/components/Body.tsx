@@ -1,5 +1,5 @@
-import GetAnime from './GetAnimeData';
-import AnimeList from './AnimeList';
+import GetAnime from './anime/GetAnimeData';
+import AnimeList from './anime/AnimeList';
 const Body = () => {
   return (
     <div>

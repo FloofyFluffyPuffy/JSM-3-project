@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import type { Anime, StreamData } from "../../../Backend/type";
+import type { Anime, StreamData } from "../../../../Backend/type";
 import axios from "axios";
 import { useDebounce } from "react-use";
 interface AnimeContextType {

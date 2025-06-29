@@ -2,7 +2,7 @@
 import Body from "./components/Body";
 import Nav from "./components/Nav";
 import { Routes, Route } from "react-router-dom";
-import Stream from "./components/Stream";
+import Stream from "./components/stream/Stream";
 function App() {
   return (
     <>

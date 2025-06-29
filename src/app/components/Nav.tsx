@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAnime } from "./AnimeProvider";
+import { useAnime } from "./anime/AnimeProvider";
 import { useRef } from "react";
 const Nav = () => {
   const { setSearchTerm } = useAnime();

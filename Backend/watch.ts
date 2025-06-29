@@ -1,8 +1,7 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
 import type { StreamData } from "./type";
- import puppeteer from "puppeteer";
-  import StealthPlugin from "puppeteer-extra-plugin-stealth";
+ import puppeteer from "puppeteer-extra"; // use extra for use to work
 
 export const getStream = async (href: string): Promise<StreamData> => {
    // no need to declare like animeData[] = []
@@ -18,19 +17,16 @@ export const getStream = async (href: string): Promise<StreamData> => {
     episodes: [],
     iframeSrc: "",
   };
-const puppeteer = require('puppeteer-extra');
- const StealthPlugin = require('puppeteer-extra-plugin-stealth');
-  // to make puppeteer.use work cuz typescript tweakin
-   puppeteer.use(StealthPlugin());
+  // to make puppeteer.use work use pup-extra cuz typescript tweakin
    const browser = await puppeteer.launch({ headless: true });
   try {
     const page = await browser.newPage();
-    const endPoint = `https://9animetv.to${href}`;
+    const endPoint = `https://9animetv.to/watch/${href}`;
     const request = await axios.get(endPoint);
-      await page.goto(endPoint, { waitUntil: "networkidle0", timeout: 60000 });
+      await page.goto(endPoint, { waitUntil: "networkidle0" });
     console.log("Scraping from:", endPoint);
     const $ = cheerio.load(request.data);
-    const iframeSrc = await page.$eval("#iframe-embed", (el: HTMLIFrameElement) => // fix type as any with HTMLelement
+    const iframeSrc = await page.$eval("#iframe-embed", (el:Element) => // IF THIS TYPE ISNT CORRECT WE CANT GET iframe
       el.getAttribute("src"));
     const episodes: { ep: string; id: string; title: string }[] = [];
     $(".ep-item").each((i, el) => {
