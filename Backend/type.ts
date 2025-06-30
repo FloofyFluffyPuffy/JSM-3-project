@@ -6,9 +6,10 @@ export interface Anime {
   href: string
 }
 export interface Episode {
-  ep: string;
+  order: string;
   id: string;
   title: string;
+  href: string
 }
 export interface StreamData {
   title: string;

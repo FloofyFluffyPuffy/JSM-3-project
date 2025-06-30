@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
-import type { StreamData } from "./type";
+import type { Episode, StreamData } from "./type";
  import puppeteer from "puppeteer-extra"; // use extra for use to work
 
 export const getStream = async (href: string): Promise<StreamData> => {
@@ -28,13 +28,15 @@ export const getStream = async (href: string): Promise<StreamData> => {
     const $ = cheerio.load(request.data);
     const iframeSrc = await page.$eval("#iframe-embed", (el:Element) => // IF THIS TYPE ISNT CORRECT WE CANT GET iframe
       el.getAttribute("src"));
-    const episodes: { ep: string; id: string; title: string }[] = [];
-    $(".ep-item").each((i, el) => {
-      const ep = $(el).data("number");
-      const id = $(el).data("id");
-      const title = $(el).attr("title") || `Episode ${ep}`;
-      episodes.push({ ep, id, title });
-    });
+const episodes: Episode[] = await page.$$eval(".ep-item", (el) => {
+  return el.map((episode) => {
+    const order = episode.getAttribute("data-number") || "";
+    const id = episode.getAttribute("data-id") || "";
+    const title = episode.getAttribute("title") || `Episode ${order}`;
+    const href = episode.getAttribute("href") || "";
+    return { order, id, title, href };
+  });
+});
 
     const title = $(".film-name.dynamic-name").text().trim();
     const image = $(".film-poster-img").attr("src") || "";
