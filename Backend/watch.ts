@@ -12,6 +12,7 @@ export const getStream = async (href: string): Promise<StreamData> => {
     image: "",
     status: "",
     type: "",
+    desc:"",
     genres: [],
     aired: "",
     episodes: [],
@@ -42,7 +43,7 @@ const episodes: Episode[] = await page.$$eval(".ep-item", (el) => {
     const image = $(".film-poster-img").attr("src") || "";
     const status = $(".item-title:contains('Status')").next().text().trim();
     const type = $(".item-title:contains('Type')").next().text().trim();
-
+    const desc = $(".shorting").text().trim()
     const genres: string[] = [];
     $(".item-title:contains('Genre')")
       .next()
@@ -52,12 +53,12 @@ const episodes: Episode[] = await page.$$eval(".ep-item", (el) => {
       });
 
     const aired = $(".item-title:contains('Date aired')").next().text().trim();
-    console.log("IFRAME SRC:", iframeSrc);
     Object.assign(data, {
       title,
       image,
       status,
       type,
+      desc,
       genres,
       aired,
       episodes,

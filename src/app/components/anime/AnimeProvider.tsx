@@ -35,6 +35,7 @@ export const AnimeProvider = ({ children }: { children: React.ReactNode }) => {
   image: "",
   status: "",
   type: "",
+  desc: "",
   genres: [],
   aired: "",
   episodes: [],

@@ -17,7 +17,7 @@ const AnimeList = () => {
     );
 
   return (
-    <div className='animeList'>
+    <div className='animeList scrollbar-hide::-webkit-scrollbar'>
       <section>
         <div className="cardContainer">
           {animeList.map((anime) => (

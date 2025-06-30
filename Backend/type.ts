@@ -16,6 +16,7 @@ export interface StreamData {
   image: string;
   status: string;
   type: string;
+  desc: string;
   genres: string[];
   aired: string;
   episodes: Episode[];
