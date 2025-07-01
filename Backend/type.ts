@@ -20,7 +20,7 @@ export interface StreamData {
   genres: string[];
   aired: string;
   episodes: Episode[];
-  iframeSrc: string;
+   iframeSrc: string;
   score: string
   duration: string
   quality: string

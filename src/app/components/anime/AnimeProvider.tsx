@@ -39,7 +39,7 @@ export const AnimeProvider = ({ children }: { children: React.ReactNode }) => {
   genres: [],
   aired: "",
   episodes: [],
-  iframeSrc: "",
+   iframeSrc: "",
       score: "",
     duration: "",
     quality: "",

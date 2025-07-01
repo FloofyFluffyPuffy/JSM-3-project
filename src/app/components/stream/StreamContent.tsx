@@ -43,8 +43,8 @@ const StreamContent = () => {
       />
     )}
     <iframe
-      src={scrapedStreamData.iframeSrc}
-      key={scrapedStreamData.iframeSrc}
+      src={iframeSrc || scrapedStreamData.iframeSrc}
+      key={iframeSrc || scrapedStreamData.iframeSrc}
       onLoad={() => setLoadingIframe(false)}
       className="w-full aspect-video rounded-xl shadow z-0"
       allowFullScreen

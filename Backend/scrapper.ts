@@ -33,6 +33,7 @@ app.get("/", async (req: Request, res: Response) => {
 });
 app.get("/watch/", async (req: Request, res: Response) => {
   const href = req.query.href as string;
+  console.log("Backend received href:", href);
   try {
     const streamData = await getStream(href);
     res.status(200).json({ streamData });

@@ -25,30 +25,30 @@ export const getStream = async (href: string): Promise<StreamData> => {
     aliases:[],
   };
   // to make puppeteer.use work use pup-extra cuz typescript tweakin
+  const endPoint = `https://9animetv.to/watch/${href}`;
   const browser = await puppeteer.launch({ headless: true });
   try {
     const page = await browser.newPage();
-    const endPoint = `https://9animetv.to/watch/${href}`;
-    const request = await axios.get(endPoint);
     await page.goto(endPoint, { waitUntil: "networkidle0" });
-    console.log("Scraping from:", endPoint);
-    const $ = cheerio.load(request.data);
-    const iframeSrc = await page.$eval(
+        const iframeSrc = await page.$eval(
       "#iframe-embed",
       (
         el: Element // IF THIS TYPE ISNT CORRECT WE CANT GET iframe
       ) => el.getAttribute("src")
     );
-    const episodes: Episode[] = await page.$$eval(".ep-item", (el) => {
-      return el.map((episode) => {
-        const order = episode.getAttribute("data-number") || "";
+        const episodes: Episode[] = await page.$$eval(".ep-item", (el) => {
+      return el.map((episode: Element) => {
+        const order = episode.getAttribute("data-number") || ""
         const id = episode.getAttribute("data-id") || "";
         const title = episode.getAttribute("title") || `Episode ${order}`;
         const href = episode.getAttribute("href") || "";
         return { order, id, title, href };
       });
     });
-
+    console.log("Backend received href:", href);
+    console.log("Scraping from:", endPoint);
+    const request = await axios.get(endPoint);
+    const $ = cheerio.load(request.data);
     const title = $(".film-name.dynamic-name").text().trim();
     const image = $(".film-poster-img").attr("src") || "";
     const status = $(".item-title:contains('Status')").next().text().trim();
@@ -73,19 +73,18 @@ const aliases = aliasesText.split(",").map(alias => alias.trim());
       .find("a")
       .each((i, el) => {
         studios.push($(el).text().trim());
-      });
-
+      })
     const aired = $(".item-title:contains('Date aired')").next().text().trim();
     Object.assign(data, {
       title,
       image,
       status,
       type,
-      desc,
+       desc,
       genres,
       aired,
       episodes,
-      iframeSrc,
+     iframeSrc,
       score,
       duration,
       quality,

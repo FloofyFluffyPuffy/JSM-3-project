@@ -5,6 +5,7 @@ import axios from "axios";
 
 const GetStream = ({ href }: { href?: string }) => {
     // have to : in {} too cuz it an object
+    console.log("Sending href to backend:", href);
       const {
         setLoading,
         scrapedStreamData,
