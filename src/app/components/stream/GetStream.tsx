@@ -2,9 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAnime } from "../anime/AnimeProvider";
 import axios from "axios";
-interface Props {
-  href?: string;
-}
+
 const GetStream = ({ href }: { href?: string }) => {
     // have to : in {} too cuz it an object
       const {

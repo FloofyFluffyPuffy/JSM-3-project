@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useAnime } from "./anime/AnimeProvider";
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 const Nav = () => {
   const { setSearchTerm } = useAnime();
+  const navigate = useNavigate()
   const [inputValue, setInputValue] = useState("");
   const inputRef = useRef<HTMLInputElement>(null); // <== here
   const handleSubmit = (e: React.FormEvent) => {
@@ -15,8 +17,8 @@ const Nav = () => {
     <div className="nav">
       <div className="logoContainer">
         <img className="logo" src="/tetoLogo.gif" alt="Teto" />
+         <img className="fatTetoLogo" src="/fatTetoHome.png" onClick={() => navigate('/')} />
       </div>
-
       <form className="search group" onSubmit={handleSubmit}>
         <input
           ref={inputRef}

@@ -21,4 +21,10 @@ export interface StreamData {
   aired: string;
   episodes: Episode[];
   iframeSrc: string;
+  score: string
+  duration: string
+  quality: string
+  views: string
+  studios: []
+  aliases: []
 }

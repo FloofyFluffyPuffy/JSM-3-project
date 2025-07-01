@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import { nineAnime } from "./anime";
 import cors from "cors"; // frontend got blocked without cors so add here
 import getStream from "./watch";
+import { getNewIframe } from "./newIframe";
 const app = express();
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 5174;
 // Allow requests from your frontend origin (use '*' to allow all for dev)
@@ -30,7 +31,7 @@ app.get("/", async (req: Request, res: Response) => {
     res.status(500).json({ error: "Internal Server Error" }); // 500 failed
   }
 });
-app.get("/watch", async (req: Request, res: Response) => {
+app.get("/watch/", async (req: Request, res: Response) => {
   const href = req.query.href as string;
   try {
     const streamData = await getStream(href);
@@ -38,6 +39,18 @@ app.get("/watch", async (req: Request, res: Response) => {
   } catch (error) {
     console.error("Failed to fetch watch data:", error);
     res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.get("/updateIframe", async (req: Request, res: Response) => {
+  const href = req.query.updateEP;
+
+  try {
+    if (typeof href !== "string") return; // stop the next line from tweaking on type
+    const newIframe = await getNewIframe(href);
+    res.status(200).json({ newIframe }); // good habit to put it in ({newIframe})
+  } catch (error) {
+    console.error("Failed to get new episode iframe.");
   }
 });
 

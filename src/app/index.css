@@ -16,7 +16,7 @@
   body {
     font-family: "DM Sans", serif;
     font-optical-sizing: auto;
-    @apply bg-teto-pink;
+    @apply bg-teto-pink ;
   }
 }
 
@@ -24,11 +24,17 @@
   .nav {
     @apply w-[80%] bg-teto-navy h-20 flex justify-between items-center mx-auto rounded-xl mb-4
   }
+  .fatTetoBg{
+    @apply absolute inset-0 w-full h-full -z-10 object-cover mt-32
+  }
   .animeList{
     @apply w-[80%] mx-auto
   }
   .logoContainer {
     @apply justify-start flex items-center;
+  }
+  .fatTetoLogo{
+    @apply w-auto h-20 justify-start cursor-pointer
   }
   .logo {
     @apply w-auto h-20 justify-start ml-3;
@@ -76,16 +82,16 @@
     @apply max-w-5xl mx-auto p-4 
   }
   .episodeList{
-    @apply bg-teto-navy my-8 rounded-xl grid-cols-2 sm:grid-cols-5 md:grid-cols-10 lg:grid-cols-15 grid gap-3 p-4 max-h-40 overflow-y-auto 
+    @apply bg-teto-charcoal outline-4 outline-teto-navy my-8 rounded-xl grid-cols-2 sm:grid-cols-5 md:grid-cols-10 lg:grid-cols-15 grid gap-3 p-4 max-h-40 overflow-y-auto 
   }
   .epButton{
-    @apply font-semibold rounded-xl transition-all duration-300 ease-in-out p-1 group-focus-within:bg-teto-crimson text-center outline-1 bg-teto-blush
+    @apply font-semibold rounded-xl transition-all duration-300 ease-in-out p-1 group-focus-within:bg-teto-crimson text-center border-teto-crimson bg-teto-blush
   }
   .epButton:hover{
-   @apply scale-125 bg-teto-crimson shadow-md cursor-pointer
+   @apply scale-125 bg-teto-pink cursor-pointer
   }
   .active { 
-    @apply bg-teto-crimson shadow-md
+    @apply bg-teto-pink
   }
   .scrollbar-hide {
   -ms-overflow-style: none; /* IE and Edge */
@@ -94,7 +100,33 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
-
+.detailsContainer{
+  @apply flex bg-teto-charcoal gap-4 outline-teto-navy outline-4  rounded-2xl
+}
+.imageD{
+  @apply rounded-3xl p-4
+}
+.textD{
+  @apply p-4 flex flex-col justify-between
+}
+.descD{
+  @apply my-1
+}
+.miscD{
+  @apply grid grid-cols-2
+}
+.miscD span{
+  @apply font-semibold
+}
+.titleD{
+  @apply font-semibold text-2xl
+}
+.aliases{
+  @apply italic text-xl
+}
+.iframeTetoLoad{
+  @apply absolute inset-0 flex items-center justify-center z-10 scale-200 animate-spin
+}
 }
 
 @utility bg-teto-pink {
@@ -163,48 +195,68 @@
     --teto-crimson
   ); /* Use for alert boxes or hovered outlines */
 }
+/* Outline Utilities (2px width) */
+@utility outline-teto-pink {
+  outline: 2px solid var(--teto-pink);
+}
+@utility outline-teto-crimson {
+  outline: 2px solid var(--teto-crimson);
+}
+@utility outline-teto-navy {
+  outline: 2px solid var(--teto-navy);
+}
+@utility outline-teto-charcoal {
+  outline: 2px solid var(--teto-charcoal);
+}
+@utility outline-teto-blush {
+  outline: 2px solid var(--teto-blush);
+}
+@utility outline-teto-lilac {
+  outline: 2px solid var(--teto-lilac);
+}
+
+/* Ring Utilities (2px width via Tailwind's ring-2) */
+@utility ring-teto-pink {
+  --tw-ring-color: var(--teto-pink);
+  --tw-ring-width: 2px;
+}
+@utility ring-teto-crimson {
+  --tw-ring-color: var(--teto-crimson);
+  --tw-ring-width: 2px;
+}
+@utility ring-teto-navy {
+  --tw-ring-color: var(--teto-navy);
+  --tw-ring-width: 2px;
+}
+@utility ring-teto-charcoal {
+  --tw-ring-color: var(--teto-charcoal);
+  --tw-ring-width: 2px;
+}
+@utility ring-teto-blush {
+  --tw-ring-color: var(--teto-blush);
+  --tw-ring-width: 2px;
+}
+@utility ring-teto-lilac {
+  --tw-ring-color: var(--teto-lilac);
+  --tw-ring-width: 2px;
+}
+
+/* Border Utilities (2px width) */
+@utility border-teto-pink {
+  border: 2px solid var(--teto-pink);
+}
+@utility border-teto-crimson {
+  border: 2px solid var(--teto-crimson);
+}
 @utility border-teto-navy {
-  border-color: var(--teto-navy); /* Use for nav elements or dark boxes */
+  border: 2px solid var(--teto-navy);
 }
 @utility border-teto-charcoal {
-  border-color: var(--teto-charcoal); /* Use for dark card borders or panels */
+  border: 2px solid var(--teto-charcoal);
 }
 @utility border-teto-blush {
-  border-color: var(--teto-blush); /* Use for light themes or soft sections */
+  border: 2px solid var(--teto-blush);
 }
 @utility border-teto-lilac {
-  border-color: var(--teto-lilac); /* Use for secondary elements or tags */
-}
-@layer utilities {
-  .ring-teto-pink {
-    @apply ring-2 ring-offset-2 ring-[color:var(--teto-pink)];
-  }
-
-  .ring-teto-crimson {
-    @apply ring-2 ring-offset-2 ring-[color:var(--teto-crimson)];
-  }
-
-  .ring-teto-navy {
-    @apply ring-2 ring-offset-2 ring-[color:var(--teto-navy)];
-  }
-
-  .ring-teto-charcoal {
-    @apply ring-2 ring-offset-2 ring-[color:var(--teto-charcoal)];
-  }
-
-  .ring-teto-blush {
-    @apply ring-2 ring-offset-2 ring-[color:var(--teto-blush)];
-  }
-
-  .ring-teto-lilac {
-    @apply ring-2 ring-offset-2 ring-[color:var(--teto-lilac)];
-  }
-
-  .ring-teto-dark {
-    @apply ring-2 ring-offset-2 ring-[color:var(--teto-text-dark)];
-  }
-
-  .ring-teto-light {
-    @apply ring-2 ring-offset-2 ring-[color:var(--teto-text-light)];
-  }
+  border: 2px solid var(--teto-lilac);
 }

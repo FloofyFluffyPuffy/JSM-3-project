@@ -40,6 +40,12 @@ export const AnimeProvider = ({ children }: { children: React.ReactNode }) => {
   aired: "",
   episodes: [],
   iframeSrc: "",
+      score: "",
+    duration: "",
+    quality: "",
+    views: "",
+    studios: [],
+    aliases: [],
   })
   return (
       <AnimeContext.Provider  value={{

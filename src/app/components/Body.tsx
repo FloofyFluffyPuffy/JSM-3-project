@@ -5,6 +5,7 @@ const Body = () => {
     <div>
       <GetAnime />
       <AnimeList />
+
     </div>
   );
 };
