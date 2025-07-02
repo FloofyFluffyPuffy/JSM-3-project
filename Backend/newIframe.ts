@@ -10,7 +10,7 @@ export const getNewIframe = async (href: string) => {
     newIframe = await page.$eval(
       "#iframe-embed",
       (
-        el: Element // IF THIS TYPE ISNT CORRECT WE CANT GET iframe
+        el // IF THIS TYPE ISNT CORRECT WE CANT GET iframe
       ) => el.getAttribute("src")
     );
   } catch (error) {

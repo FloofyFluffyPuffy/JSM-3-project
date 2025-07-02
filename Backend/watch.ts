@@ -38,7 +38,7 @@ export const getStream = async (href: string): Promise<StreamData> => {
     );
         const episodes: Episode[] = await page.$$eval(".ep-item", (el) => {
       return el.map((episode: Element) => {
-        const order = episode.getAttribute("data-number") || ""
+        const order = episode.getAttribute("data-number") || "";
         const id = episode.getAttribute("data-id") || "";
         const title = episode.getAttribute("title") || `Episode ${order}`;
         const href = episode.getAttribute("href") || "";
