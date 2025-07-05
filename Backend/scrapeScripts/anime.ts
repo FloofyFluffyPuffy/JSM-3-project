@@ -1,15 +1,14 @@
 import axios from "axios";
-import * as cheerio from "cheerio";
-import type { Anime } from "./type";
-export const nineAnime = async (searchTerm: string): Promise<Anime[]> => { //accept searchTerm from scrapper
+import * as cheerio from "cheerio"; // All exports (default + named) as one object
+import type { Anime } from "../type";
+export const nineAnime = async (searchTerm?: string, page?: string): Promise<Anime[]> => { //accept searchTerm from scrapper
   const data: Anime[] = [];
   try {
 const cleanTerm = (searchTerm || "").toLowerCase().trim(); // clean stuf flike "   sasaki"
 const searchWord = encodeURIComponent(cleanTerm);
-
-const endPoint = cleanTerm.length > 0 // use cleanTerm cuz if no searchTerm passed from searchBar = undefined
+const endPoint =  searchTerm && cleanTerm.length > 0 // use cleanTerm cuz if no searchTerm passed from searchBar = undefined
   ? `https://9animetv.to/search?keyword=${searchWord}`
-  : `https://9animetv.to/recently-updated`;
+  : page? `https://9animetv.to/recently-updated?page=${page}` : `https://9animetv.to/recently-updated`; 
     const request = await axios.get(endPoint);
     // console.log(request.data)
     console.log("Search term:", searchTerm);
@@ -23,12 +22,15 @@ console.log("Endpoint:", endPoint);
       const newEp = $(e).find(".tick-eps").text().trim() || "Ep ?";
       const SD = $(e).find(".tick-sub").text().trim() || "Unknown";
       const href = $(e).find(".film-name > a").attr("href") || "Unknown"
+      const totalPagesText = $(".ap__-input .btn-blank").last().text().trim(); // "of 201"
+      const totalPages = parseInt(totalPagesText.replace("of", "").trim());
       data.push({
         title,
         image,
         newEp,
         SD,
-        href
+        href,
+        totalPages
       });
     });
   } catch (error) {

@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
-import type { Episode, StreamData } from "./type";
+import type { Episode, StreamData } from "../type";
 import puppeteer from "puppeteer-extra"; // use extra for use to work
 
 export const getStream = async (href: string): Promise<StreamData> => {

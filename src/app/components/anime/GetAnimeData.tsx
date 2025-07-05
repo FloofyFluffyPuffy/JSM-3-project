@@ -5,11 +5,10 @@ export const GetAnime = () => {
   const {
     animeList,
     setAnimeList,
-    loading,
     setLoading,
     searchTerm,
-    setSearchTerm,
-    debouncedSearchTerm
+    debouncedSearchTerm,
+    page
   } = useAnime();
   const API_URL = import.meta.env.VITE_BACKEND_API_URL; // remember to put this wher package.json,vite.ts is
        useEffect(() => {
@@ -28,6 +27,22 @@ export const GetAnime = () => {
               setLoading(false);
             });
         }, [debouncedSearchTerm]);
+               useEffect(() => {
+        setLoading(true);
+          //   console.log("Calling API URL:", API_URL); //checking API
+          axios
+            .get(`${API_URL}/`,  {params: {page}}) 
+            // params pass it along with the url like http://localhost:5174/?searchTerm=one+piece to back end
+            .then((res) => {
+                     // use then bcuz it simple no need chaining thens
+              setAnimeList(res.data.animeData);
+              setLoading(false);
+            })
+            .catch((error) => {
+              console.error("Failed to fetch anime data", error);
+              setLoading(false);
+            });
+        }, [page]);
   useEffect(() => {
     console.log("animeList updated:", animeList)
   }, [animeList]);

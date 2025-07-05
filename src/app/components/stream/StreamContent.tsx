@@ -37,8 +37,8 @@ const StreamContent = () => {
   <div className="iframeWrapper relative">
     {loadingIframe && (
       <img
-        src="/fatTeto.png"
-        className="iframeTetoLoad"
+        src="/tetoDance2.gif"
+        className="tetoDanceLoad"
         alt="Loading..."
       />
     )}
@@ -46,7 +46,7 @@ const StreamContent = () => {
       src={iframeSrc || scrapedStreamData.iframeSrc}
       key={iframeSrc || scrapedStreamData.iframeSrc}
       onLoad={() => setLoadingIframe(false)}
-      className="w-full aspect-video rounded-xl shadow z-0"
+      className={`iframePlayer ${loadingIframe? "hidden" : "block" }`}
       allowFullScreen
       sandbox="allow-scripts allow-same-origin"
       referrerPolicy="strict-origin-when-cross-origin"

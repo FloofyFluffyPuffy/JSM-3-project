@@ -23,7 +23,7 @@ const AnimeDetails = () => {
                 </div>
                 <div>
                      <p><span>Views:</span> {scrapedStreamData.views}</p>
-                <p><span>Score:</span> {scrapedStreamData.score}</p>
+                <p><span>Score:</span> {scrapedStreamData.score.length > 0 ? scrapedStreamData.views : "N/A"}</p>
                 <p><span>Duration:</span> {scrapedStreamData.duration}</p>
                 <p><span>Quality:</span> {scrapedStreamData.quality}</p>
                 </div>

@@ -4,6 +4,7 @@ export interface Anime {
   newEp: string;
   SD: string;
   href: string
+  totalPages?: number; // optional, only used in search
 }
 export interface Episode {
   order: string;

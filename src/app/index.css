@@ -22,7 +22,7 @@
 
 @layer components {
   .nav {
-    @apply w-[80%] bg-teto-navy h-20 flex justify-between items-center mx-auto rounded-xl mb-4
+    @apply w-[80%] bg-teto-navy h-20 flex justify-between items-center mx-auto rounded-xl mb-8
   }
   .fatTetoBg{
     @apply absolute inset-0 w-full h-full -z-10 object-cover mt-32
@@ -39,8 +39,20 @@
   .logo {
     @apply w-auto h-20 justify-start ml-3;
   }
+  .searchWrap{
+    @apply flex flex-col
+  }
+  .animeDropdown{
+    @apply bg-yellow-300 absolute top-full w-full mt-2 z-11
+  }
+  .searchCard{
+    @apply bg-teal-200 max-w-full h-20 
+  }
+  .animeDropdown{
+    @apply bg-amber-400
+  }
   .search {
-    @apply flex rounded-full bg-teto-blush h-12 w-[520px] justify-between items-center pr-[1px] 
+    @apply flex rounded-full bg-teto-blush h-12 w-[520px] justify-between items-center pr-[1px]
   }
   .searchIcon {
   @apply  h-8 w-8 mr-2 rounded-xl transition-all duration-300 ease-in-out p-1 group-focus-within:bg-teto-crimson
@@ -61,7 +73,7 @@
     @apply grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4
   }
   .animeCards {
-    @apply text-center rounded-2xl bg-teto-lilac
+    @apply text-center rounded-2xl bg-teto-lilac outline-teto-navy outline-4 shadow-lg
   }
   .animeTitle{
     @apply font-bold text-[18px] text-black truncate
@@ -125,10 +137,38 @@
   @apply italic text-xl
 }
 .iframeTetoLoad{
-  @apply absolute inset-0 flex items-center justify-center z-10 scale-200 animate-spin
+  @apply absolute inset-0 flex items-center justify-center z-10 scale-200 animate-spin 
 }
+.tetoDanceLoad{
+  @apply w-full mx-auto rounded-xl aspect-video
+}
+.iframePlayer{
+  @apply w-full aspect-video rounded-xl shadow z-0
+}
+.footer {
+    @apply w-[82%] bg-teto-navy h-20 flex justify-center mt-8 mx-auto rounded-xl
+  }
+.pageControl{
+  @apply flex items-center justify-center w-full 
 }
 
+.pageForm{
+  @apply flex items-center justify-center bg-teto-blush rounded-xl 
+}
+.pageInput{
+  @apply rounded-xl w-8 text-center
+}
+.pageInput:focus{
+  @apply rounded-xl w-8 text-center outline-none ring-0 focus:ring-0 focus:outline-none 
+}
+.pageBtn{
+  @apply  h-8 w-8 rounded-xl transition-all duration-300 ease-in-out p-1 group-focus-within:bg-teto-lilac
+}
+.pageBtn:hover {
+  @apply bg-teto-lilac text-white rounded-lg cursor-pointer transition-all duration-300 ease-in-out
+}
+
+}
 @utility bg-teto-pink {
   background-color: var(
     --teto-pink
@@ -159,6 +199,9 @@
     --teto-lilac
   ); /* Use for labels, tags, secondary buttons */
 }
+  @utility bg-teto-dark {
+  background-color: var(--teto-text-dark); /* Use for body text on light backgrounds */
+} 
 
 @utility text-teto-pink {
   color: var(--teto-pink); /* Use for emphasis text, links, accents */
