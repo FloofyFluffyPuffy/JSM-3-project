@@ -65,9 +65,11 @@ app.get("/updateIframe", async (req: Request, res: Response) => {
 });
 app.get("/searchCard", async (req: Request, res: Response) => {
   const input = req.query.inputValue
+    console.log("Received input:", input); 
   if (typeof input !== "string") return;
   const searchCardData = await searchCardScript(input)
-   res.json({ searchCL: searchCardData });
+   console.log("Returning data:", searchCardData); // Add this line
+   res.json({ cardData: searchCardData });
 })
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Backend server running on port ${PORT}`);

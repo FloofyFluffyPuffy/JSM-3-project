@@ -29,3 +29,13 @@ export interface StreamData {
   studios: []
   aliases: []
 }
+export interface SearchCard {
+    title: string;
+  image: string;
+  newEp: string;
+  SD: string;
+  href: string
+  aired: string;
+  type: string;
+  duration: string
+}

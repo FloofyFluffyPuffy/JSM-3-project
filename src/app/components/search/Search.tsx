@@ -10,16 +10,24 @@ const Search = () => {
   const inputRef = useRef<HTMLInputElement>(null); // <== here
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault(); // Prevents the page from reloading
-    setSearchTerm(inputValue);
+    if (typeof inputValue === "string") {
+      setSearchTerm(inputValue);
+    }
     inputRef.current?.blur(); // <== blur input
   };
   useEffect(() => {
-    axios
-      .get(`${API_URL}/searchCard`, { params: { inputValue } })
-      .then((res) => {
-        setSearchCL(res.data.searchCL);
-        console.log("Fetched searchCL:", res.data.searchCL);
+    if (!inputValue.trim()) return; // remove black ""
+    const fetchData = async () => {
+    try {
+      const res = await axios.get(`${API_URL}/searchCard`, { 
+        params: { inputValue } 
       });
+      setSearchCL(res.data.cardData);
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+    }
+  };
+  fetchData() 
   }, [inputValue]);
   return (
     <div className="searchWrap relative">
@@ -39,17 +47,21 @@ const Search = () => {
         </button>
       </form>
       <div className="animeDropdown">
-        {searchCL.map((card) => (
-          <div className="searchCard" key={card.href}>
-            <img src={card.image} alt={card.title} />
-            <div className="searchCD">
-              <p>{card.title}</p>
-              <div className="cardExtraD">
-                <span></span>
+        {searchCL.length > 0 ? (
+          searchCL.map((card) => (
+            <div className="searchCard" key={card.href}>
+              <img src={card.image} alt={card.title} />
+              <div className="searchCD">
+                <p>{card.title}</p>
+                <div className="cardExtraD">
+                  <span></span>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <div className="noResults">No results found</div>
+        )}
       </div>
     </div>
   );

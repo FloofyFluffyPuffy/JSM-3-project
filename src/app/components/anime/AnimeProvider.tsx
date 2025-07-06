@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import type { Anime, StreamData } from "../../../../Backend/type";
+import type { Anime, SearchCard, StreamData } from "../../../../Backend/type";
 import { useDebounce } from "react-use";
 interface AnimeContextType {
   animeList: Anime[];
@@ -15,8 +15,8 @@ interface AnimeContextType {
   setPage: React.Dispatch<React.SetStateAction<number>>;
   pageInput: string;
   setPageInput: React.Dispatch<React.SetStateAction<string>>;
-  searchCL: Anime[]; // added searchCL to context
-  setSearchCL: React.Dispatch<React.SetStateAction<Anime[]>>; // added}
+  searchCL: SearchCard[]; // added searchCL to context
+  setSearchCL: React.Dispatch<React.SetStateAction<SearchCard[]>>; // added}
   inputValue: string; // added inputValue to context
   setInputValue: React.Dispatch<React.SetStateAction<string>>; // added inputValue
 }
@@ -42,7 +42,7 @@ export const AnimeProvider = ({ children }: { children: React.ReactNode }) => {
     [searchTerm]
   );
   const [inputValue, setInputValue] = useState("");
-  const [searchCL, setSearchCL] = useState<Anime[]>([])
+  const [searchCL, setSearchCL] = useState<SearchCard[]>([])
   const [animeList, setAnimeList] = useState<Anime[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [scrapedStreamData, setScrapedStreamData] = useState<StreamData>({
