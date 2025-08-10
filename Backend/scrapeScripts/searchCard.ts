@@ -11,7 +11,7 @@ export const searchCardScript = async (input: string): Promise<SearchCard[]> => 
     const request = await axios.get(endPoint);
     console.log("Input?:", input)
     const $ = cheerio.load(request.data);
-    const batch1 = $(".film_list-wrap > .flw-item").slice(0, 5).get();
+    const batch1 = $(".film_list-wrap > .flw-item").slice(0, 4).get();
     console.log("Found cards:", batch1.length);
     for (const card of batch1) {
       const title =

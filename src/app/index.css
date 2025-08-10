@@ -40,16 +40,24 @@
     @apply w-auto h-20 justify-start ml-3;
   }
   .searchWrap{
-    @apply flex flex-col
   }
   .animeDropdown{
-    @apply bg-yellow-300 absolute top-full w-full mt-2 z-11
+    @apply bg-teto-charcoal absolute top-full w-full mt-2 z-11 rounded-2xl hidden flex-col group-focus-within:flex
   }
   .searchCard{
-    @apply bg-teal-200 max-w-full h-20 
+    @apply  w-full max-w-full h-20 group-focus-within:flex justify-start pl-3 items-center  cursor-pointer hover:bg-teto-crimson hidden 
   }
-  .animeDropdown{
-    @apply bg-amber-400
+  .searchCD{
+    @apply  items-center 
+  }
+    .SCName{
+    @apply pl-3 text-xl font-semibold max-w-[430px] truncate 
+  }
+  .SCImage{
+    @apply min-w-[64px] max-w-[64px] min-h-[64px] max-h-[64px] 
+  }
+  .cardExtraD {
+    @apply flex gap-4 text-teto-dark items-center w-full pl-2 
   }
   .search {
     @apply flex rounded-full bg-teto-blush h-12 w-[520px] justify-between items-center pr-[1px]
@@ -167,7 +175,6 @@
 .pageBtn:hover {
   @apply bg-teto-lilac text-white rounded-lg cursor-pointer transition-all duration-300 ease-in-out
 }
-
 }
 @utility bg-teto-pink {
   background-color: var(

@@ -19,6 +19,8 @@ interface AnimeContextType {
   setSearchCL: React.Dispatch<React.SetStateAction<SearchCard[]>>; // added}
   inputValue: string; // added inputValue to context
   setInputValue: React.Dispatch<React.SetStateAction<string>>; // added inputValue
+  dbInputValue: string; // added dbInputValue to context
+  dbSetInputValue: React.Dispatch<React.SetStateAction<string>>; // added db
 }
 const AnimeContext = createContext<AnimeContextType | null>(null); // make new context
 // | is either || is or
@@ -33,7 +35,7 @@ export const AnimeProvider = ({ children }: { children: React.ReactNode }) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [page, setPage] = useState<number>(1);
-  const [pageInput, setPageInput] = useState<string>("1"); // to avoid NaN problem on footer
+  const [pageInput, setPageInput] = useState<string>(""); // to avoid NaN problem on footer
   useDebounce(
     () => {
       setDebouncedSearchTerm(searchTerm);
@@ -41,7 +43,15 @@ export const AnimeProvider = ({ children }: { children: React.ReactNode }) => {
     300,
     [searchTerm]
   );
-  const [inputValue, setInputValue] = useState("");
+   const [inputValue, setInputValue] = useState("");
+    useDebounce(
+    () => {
+      dbSetInputValue(inputValue);
+    },
+    300,
+    [inputValue]
+  );
+    const [dbInputValue, dbSetInputValue] = useState("");
   const [searchCL, setSearchCL] = useState<SearchCard[]>([])
   const [animeList, setAnimeList] = useState<Anime[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -82,6 +92,8 @@ export const AnimeProvider = ({ children }: { children: React.ReactNode }) => {
         setSearchCL, // added searchCL to context
         inputValue,
         setInputValue, // added inputValue to context
+        dbInputValue, // added dbInputValue to context
+        dbSetInputValue, // added dbSetInputValue to context
       }}
     >
       {children}
